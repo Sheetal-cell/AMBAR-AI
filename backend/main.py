@@ -4,6 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from backend.api.aqi import router as aqi_router
 from backend.api.hotspots import router as hotspot_router
 from backend.api.fire import router as fire_router
+from backend.api.ml_aqi import router as ml_router
+
 
 app = FastAPI(
     title="AMBAR AI",
@@ -34,6 +36,12 @@ app.include_router(
     fire_router,
     prefix="/api/fire",
     tags=["Fire"]
+)
+
+app.include_router(
+    ml_router,
+    prefix="/api/ml",
+    tags=["Machine Learning"]
 )
 
 
